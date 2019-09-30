@@ -14,8 +14,6 @@ public class NeedleMovement : MonoBehaviour
     private void Awake() {
         rbody = GetComponent<Rigidbody2D>();
         needlebody.SetActive(false);
-
-        FireTheNeedle();
     }
 
     // Start is called before the first frame update
@@ -62,6 +60,7 @@ public class NeedleMovement : MonoBehaviour
             touchedTheCircle = true;
             rbody.isKinematic = true;
             gameObject.transform.SetParent(other.transform);
+
         }
     }
 }
