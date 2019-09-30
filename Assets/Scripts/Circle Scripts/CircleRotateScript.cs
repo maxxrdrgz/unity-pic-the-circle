@@ -13,6 +13,7 @@ public class CircleRotateScript : MonoBehaviour
     void Awake()
     {
         canRotate = true;
+        StartCoroutine(ChangeRotation());
     }
 
     // Update is called once per frame
@@ -31,5 +32,22 @@ public class CircleRotateScript : MonoBehaviour
         angle = transform.rotation.eulerAngles.z;
         angle += rotationSpeed * Time.deltaTime;
         transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
+    }
+
+    /** 
+        This function will change the rotation speed and the rotation direction
+        every 1 to 3 seconds. The rotation speed is also chosen at a random
+        speed between 50 and 100.
+
+        @param {IEnumerator} returns random delay between 1 and 3 seconds
+    */
+    IEnumerator ChangeRotation(){
+        yield return new WaitForSeconds(Random.Range(1f, 3f));
+        if(Random.Range(0, 2) > 0){
+            rotationSpeed = Random.Range(50, 100);
+        }else{
+            rotationSpeed = -Random.Range(50, 100);
+        }
+        StartCoroutine(ChangeRotation());
     }
 }
