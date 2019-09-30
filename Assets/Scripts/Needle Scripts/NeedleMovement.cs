@@ -8,7 +8,7 @@ public class NeedleMovement : MonoBehaviour
     [SerializeField]
     private GameObject needlebody;
     private bool canFireNeedle, touchedTheCircle;
-    private float forceY = 5f;
+    private float forceY = 15f;
     private Rigidbody2D rbody;
 
     private void Awake() {
